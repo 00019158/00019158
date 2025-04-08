@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title><%= review ? "Edit a Review" : "Add a Reciew" %></title>
+  <link rel="stylesheet" href="/style2.css">
+</head>
+<body>
+  <div class="container">
+    <h1><%= review ? "Edit a Review" : "Add a Review" %></h1>
+    
+    <form action="<%= review ? '/reviews/edit/' + review.id : '/reviews/add' %>" method="POST">
+      <label>Name of the book: <input type="text" name="title" value="<%= review ? review.title : '' %>" required></label><br>
+      <label>Author: <input type="text" name="author" value="<%= review ? review.author : '' %>" required></label><br>
+      <label>Genre: <input type="text" name="genre" value="<%= review ? review.genre : '' %>" required></label><br>
+      <label>Review: <textarea name="review" required><%= review ? review.review : '' %></textarea></label><br>
+      <label>Rating: <input type="number" name="rating" min="1" max="5" value="<%= review ? review.rating : '' %>" required></label><br>
+      <button type="submit"><%= review ? 'Save changes' : 'Save' %></button>
+    </form>
+    
+    <a href="/">← Back</a>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Review </title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Book Review</h1>
+    <h5>This web application was created to fulfill Web Technology module’s requirements and does not represent an actual company or service”</h5>
+    <nav><a href="/reviews/add">Add review</a></nav>
+
+    <% reviews.forEach(review => { %>
+      <div class="review-card">
+        <h2><%= review.title %> — <%= review.author %></h2>
+        <p><strong>Genre:</strong> <%= review.genre %></p>
+        <p><%= review.review %></p>
+        <p><strong>Rating:</strong> <%= review.rating %>/5</p>
+        <form action="/reviews/delete/<%= review.id %>" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+        <a href="/reviews/edit/<%= review.id %>">Edit review</a>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
+
